@@ -1,0 +1,23 @@
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: you@example.com
+      storage: acme.json
+      httpChallenge:
+        entryPoint: web
+
+http:
+  routers:
+    mcp:
+      rule: "Host(`mcp.yourdomain.com`)"
+      entryPoints:
+        - websecure
+      service: mcp
+      tls:
+        certResolver: letsencrypt

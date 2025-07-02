@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  mcp-server:
+    build: .
+    ports:
+      - "8000:80"  # maps container port 80 to localhost:8000
